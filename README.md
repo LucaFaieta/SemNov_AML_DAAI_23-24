@@ -1,7 +1,7 @@
 # Benchmarking 3D Point Cloud Classifiers in Synthetic to Real scenarios: A Cross-Domain Study with Qualitative Grad-CAM Insights
 
 
-[\[Project Paper\]](URL)
+[\[Project Paper\]](paper_def.pdf)
 
 Code for SemNov3Detection project -  Advanced Machine Learning course AY 2023/2024 - PoliTO
 
