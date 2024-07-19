@@ -18,56 +18,47 @@ This code could serve as a promising foundation for future work, implementing an
 We perform our experiments with PyTorch 1.9.1+cu111 and Python 3.7. To install all the required packages simply run:
 
 ```
-```
 pip install -r requirements.txt
-```
 ```
 
 To install PointNet++ you also need to run:
 
 ```
-```
 pip install "git+https://github.com/erikwijmans/Pointnet2_PyTorch.git#egg=pointnet2_ops&subdirectory=pointnet2_ops_lib"
 pip install "https://github.com/unlimblue/KNN_CUDA/releases/download/0.2/KNN_CUDA-0.2-py3-none-any.whl"
 ```
-```
-N.B. system-wide CUDA version should match the PyTorch one
+
+N.B. system-wide CUDA version should match the PyTorch one.
 
 ## Data 
 
 All data used in our experiments can be downloaded as follows:
-```
+
 ```
 chmod +x download_data.sh
 ./download_data.sh
 ```
-```
 
 ## Models Training
 Here you can find code to train DGCNN or PointNet++ on synthetic dataset:
-```
+
 ```
 #example cell for training a model
 !python classifiers/trainer_cla_md.py --config cfgs/pn2-msg.yaml --exp_name Pointnet_SR2_cosine --src SR2 --loss cosine --wandb_proj AML_DAAI_proj23_24_Pointnet_SR2_cosine --batch_size 32 --ckpt_path /content/drive/MyDrive/SemNov_AML_DAAI_23-24/outputs/Pointnet_SR2_cosine/models/model_best.pth
 ```
-```
+
 You can train PointBERT checkpoints adding the  "--fine_tuning path/to/pointBERT/model" option to the previous command. Checkpoints can be downloaded cloning their repository. We tested the following:
 
 ```
-```
 git clone https://huggingface.co/OpenShape/openshape-pointbert-vitl14-rgb
 ```
 ```
-```
-```
 git clone https://huggingface.co/OpenShape/openshape-pointbert-vitl14-rgb
-```
-```
 ```
 ```
 git clone https://huggingface.co/OpenShape/openshape-pointbert-vitg14-rgb
 ```
-```
+
 N.B. implementation of other PointBERT checkpoints from OpenShape publication is not currently plug and play. If you want to test them you should manually manage their implementation in the code.
 
 
@@ -76,14 +67,15 @@ N.B. implementation of other PointBERT checkpoints from OpenShape publication is
 To evaluate a model you can run the following:
 
 ```
-```
 #cell example for evaluation 
 !python /content/drive/MoyDrive/SemNov_AML_DAAI_23-24/classifiers/trainer_cla_md.py --config /content/drive/MyDrive/SemNov_AML_DAAI_23-24/cfgs/Pointbertb32.yaml --exp_name OpenShape_Pointbertb32_SR2 --src SR2 --loss CE --wandb_proj AML_DAAI_proj23_24_test --mode eval --batch_size 128
+```
 
+```
 ##eventually load checkpoint
 -- ckpt_path /content/drive/MyDrive/SemNov_AML_DAAI_23-24/outputs/OpenShape_Pointbertb32_SR2/models/model_best.pth -
 ```
-```
+
 
 To save GradCAM plots (currently only for DGCNN) add "--gradcam path/to/your/plots" option to the previous script
 
